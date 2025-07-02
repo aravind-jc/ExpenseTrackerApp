@@ -1,20 +1,18 @@
-// MSAL Configuration
+// Microsoft Login Configuration
 const msalConfig = {
   auth: {
-    clientId: "c7a76366-d5fc-4a4b-85e0-36f9d3b5d0b7", // Replace with your own Client ID
+    clientId: "c7a76366-d5fc-4a4b-85e0-36f9d3b5d0b7", // Your app's client ID
     authority: "https://login.microsoftonline.com/common",
-    redirectUri: "https://aravindmudhira1.expensetrackerapp.repl.co" // Replace with your Replit live URL
+    redirectUri: "https://<your-username>.github.io/ExpenseTrackerApp/"
   }
 };
 
 const msalInstance = new msal.PublicClientApplication(msalConfig);
 
-// Login request scopes
 const loginRequest = {
-  scopes: ["User.Read", "Files.ReadWrite.All", "offline_access"]
+  scopes: ["User.Read", "Files.ReadWrite.All"]
 };
 
-// Login button click handler
 document.getElementById("loginButton").addEventListener("click", async () => {
   if (msalInstance.getAllAccounts().length > 0) {
     alert("Already logged in!");
@@ -24,16 +22,18 @@ document.getElementById("loginButton").addEventListener("click", async () => {
   try {
     const loginResponse = await msalInstance.loginPopup(loginRequest);
     alert("Login successful!");
-    console.log("Access token:", loginResponse.accessToken);
-
-    // You can now call Microsoft Graph or OneDrive API here
+    console.log("Access Token:", loginResponse.accessToken);
   } catch (error) {
     if (error.errorCode === "interaction_in_progress") {
-      alert("Login failed: Another login attempt is already running. Please wait and try again.");
-    } else if (error.errorCode === "user_cancelled") {
-      alert("Login cancelled by user.");
+      alert("Login already in progress. Please wait.");
     } else {
       alert(`Login failed: ${error.errorCode}\n${error.errorMessage}`);
     }
   }
+});
+
+// Placeholder: Handle form submission (later we'll send to Excel)
+document.getElementById("expenseForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  alert("Expense saved (not yet sent to Excel)");
 });
