@@ -1,13 +1,18 @@
 {
   "name": "Expense Tracker",
-  "short_name": "Expenses",
-  "start_url": "./index.html",
+  "short_name": "Tracker",
+  "start_url": ".",
   "display": "standalone",
   "background_color": "#ffffff",
-  "description": "Quickly log your expenses and save them to Excel",
+  "theme_color": "#000000",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/263/263115.png",
+      "src": "icon192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon512.png",
       "sizes": "512x512",
       "type": "image/png"
     }
