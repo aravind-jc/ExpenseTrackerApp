@@ -21,15 +21,20 @@ msalInstance.handleRedirectPromise()
   .then((response) => {
     if (response !== null) {
       const account = response.account;
-      console.log("Logged in user:", account);
-      alert("Login successful! Welcome " + account.username);
+      const allowedUser = "aravindmudhiraj@gmail.com"; // your email
+
+      if (account.username.toLowerCase() === allowedUser.toLowerCase()) {
+        alert("Login successful! Welcome " + account.username);
+      } else {
+        alert("Access denied: Unauthorized user");
+        msalInstance.logoutRedirect();
+      }
     }
   })
   .catch((error) => {
     console.error("Redirect handling failed:", error);
     alert("Login failed: " + error.errorMessage);
   });
-
 // Placeholder: Handle form submission (later we'll send to Excel)
 document.getElementById("expenseForm").addEventListener("submit", function (e) {
   e.preventDefault();
