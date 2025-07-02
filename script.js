@@ -20,8 +20,9 @@ document.getElementById("loginButton").addEventListener("click", () => {
 msalInstance.handleRedirectPromise()
   .then((response) => {
     if (response !== null) {
-      console.log("Logged in user:", response.account);
-      alert("Login successful!");
+      const account = response.account;
+      console.log("Logged in user:", account);
+      alert("Login successful! Welcome " + account.username);
     }
   })
   .catch((error) => {
