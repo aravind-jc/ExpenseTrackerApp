@@ -1,11 +1,11 @@
-// Microsoft Login Configuration
 const msalConfig = {
   auth: {
-    clientId: "c7a76366-d5fc-4a4b-85e0-36f9d3b5d0b7", // Your app's client ID
+    clientId: "c7a76366-d5fc-4a4b-85e0-36f9d3b5d0b7",
     authority: "https://login.microsoftonline.com/common",
     redirectUri: "https://aravind-jc.github.io/ExpenseTrackerApp/"
   }
 };
+
 
 const msalInstance = new msal.PublicClientApplication(msalConfig);
 
