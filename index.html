@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quick Expense Tracker</title>
+  <title>Expense Tracker</title>
+  <link rel="manifest" href="manifest.json" />
 </head>
 <body>
   <h2>Quick Expense Entry</h2>
 
-  <!-- Login with Microsoft -->
+  <!-- Microsoft Login -->
   <button id="loginButton">Login with Microsoft</button>
 
   <form id="expenseForm">
@@ -27,23 +28,21 @@
     </p>
 
     <p>Amount: <input type="number" id="amount" required /></p>
-
-    <p>Comment (optional): <input type="text" id="comment" /></p>
-
+    <p>Comment: <input type="text" id="comment" /></p>
     <button type="submit">Save</button>
   </form>
 
-  <!-- Microsoft MSAL.js -->
+  <!-- Microsoft MSAL Library -->
   <script src="https://alcdn.msauth.net/browser/2.35.0/js/msal-browser.min.js"></script>
 
-  <!-- Your script file -->
+  <!-- Your script -->
   <script src="script.js"></script>
 
-  <!-- Optional: Service worker registration -->
+  <!-- Register Service Worker -->
   <script>
-    if ("serviceWorker" in navigator) {
-      navigator.serviceWorker.register("service-worker.js")
-        .then(() => console.log("Service Worker registered"));
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('service-worker.js')
+        .then(() => console.log('Service Worker Registered'));
     }
   </script>
 </body>
