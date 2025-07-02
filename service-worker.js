@@ -1,7 +1,11 @@
-self.addEventListener("install", function (e) {
-  console.log("Service Worker: Installed");
+self.addEventListener("install", (event) => {
+  console.log("Service Worker installed.");
 });
 
-self.addEventListener("fetch", function (e) {
-  // Optional: Add fetch caching later if needed
+self.addEventListener("activate", (event) => {
+  console.log("Service Worker activated.");
+});
+
+self.addEventListener("fetch", (event) => {
+  // You can add caching here if needed
 });
