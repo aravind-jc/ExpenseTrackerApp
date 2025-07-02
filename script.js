@@ -3,7 +3,7 @@ const msalConfig = {
   auth: {
     clientId: "c7a76366-d5fc-4a4b-85e0-36f9d3b5d0b7", // Your app's client ID
     authority: "https://login.microsoftonline.com/common",
-    redirectUri: "https://<your-username>.github.io/ExpenseTrackerApp/"
+    redirectUri: "https://aravind-jc.github.io/ExpenseTrackerApp/"
   }
 };
 
