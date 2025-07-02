@@ -13,24 +13,21 @@ const loginRequest = {
   scopes: ["User.Read", "Files.ReadWrite.All"]
 };
 
-document.getElementById("loginButton").addEventListener("click", async () => {
-  if (msalInstance.getAllAccounts().length > 0) {
-    alert("Already logged in!");
-    return;
-  }
-
-  try {
-    const loginResponse = await msalInstance.loginPopup(loginRequest);
-    alert("Login successful!");
-    console.log("Access Token:", loginResponse.accessToken);
-  } catch (error) {
-    if (error.errorCode === "interaction_in_progress") {
-      alert("Login already in progress. Please wait.");
-    } else {
-      alert(`Login failed: ${error.errorCode}\n${error.errorMessage}`);
-    }
-  }
+document.getElementById("loginButton").addEventListener("click", () => {
+  msalInstance.loginRedirect(loginRequest);
 });
+
+msalInstance.handleRedirectPromise()
+  .then((response) => {
+    if (response !== null) {
+      console.log("Logged in user:", response.account);
+      alert("Login successful!");
+    }
+  })
+  .catch((error) => {
+    console.error("Redirect handling failed:", error);
+    alert("Login failed: " + error.errorMessage);
+  });
 
 // Placeholder: Handle form submission (later we'll send to Excel)
 document.getElementById("expenseForm").addEventListener("submit", function (e) {
